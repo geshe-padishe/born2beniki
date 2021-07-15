@@ -8,4 +8,4 @@ who -bs | cut -b 23-38 | awk '{print("#Last boot: "$0)}'
 ss -ta state established | grep "EST" | wc -l | awk '{print("#Connexions TCP : "$0" ESTABLISHED")}'
 who | wc -l | awk '{print("#User log: "$0)}'
 hostname -I ; cat /sys/class/net/enp0s3/address
-
+cat /var/log/auth.log | grep -a sudo | grep -a COMMAND | wc -l
