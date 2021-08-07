@@ -8,9 +8,9 @@ who -bs | cut -b 23-38 | awk '{print("#Last boot: "$0)}'
 lines=`sudo lsblk | grep lvm | wc -l`;
 if [ $lines -gt 0 ]
 then
-	echo "LVM use: yes\n"
+	echo "LVM use: yes"
 else
-	echo "LVM use: no\n"
+	echo "LVM use: no"
 fi
 ss -st | grep TCP: | grep -o '[0-9]' | sed '1d' | head -1 | awk '{print("#Connexions TCP : "$0" ESTABLISHED")}'
 who | wc -l | awk '{print("#User log: "$0)}'
