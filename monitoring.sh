@@ -1,3 +1,4 @@
+#!/bin/bash
 uname --all
 nproc --all | awk '{print("#CPU physical : "$0)}'
 lscpu | grep 'Core(s)\|Socket\|CPU(s):      ' | grep -Eo '[0-9]{1,}' | tr '\n' ' ' | awk '{print("#vCPU : "$1 * $2 * $3)}'
@@ -15,4 +16,4 @@ fi
 ss -st | grep TCP: | grep -o '[0-9]' | sed '1d' | head -1 | awk '{print("#Connexions TCP : "$0" ESTABLISHED")}'
 who | wc -l | awk '{print("#User log: "$0)}'
 (hostname -I | awk '{print("#Netowrk: IP "$0)}' | tr '\n' ' ' | sed 's/.$//';cat /sys/class/net/enp0s3/address | awk '{print("("$0")")}')
-cat /var/log/auth.log | grep -a sudo | grep -a COMMAND | wc -l | awk '{print("#Sudo : "$0" cmd")}'
+ls -l /var/log/sudo/00/00 | wc -l |awk '{print("#Sudo : "$0 - 1" cmd")}'
