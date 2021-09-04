@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo sh ~/born2beniki/monitoring.sh | wall
+sudo bash ~/born2beniki/monitoring.sh | wall
